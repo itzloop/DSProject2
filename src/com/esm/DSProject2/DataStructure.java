@@ -22,6 +22,7 @@ public class DataStructure {
     /**
      * For adding data manually
      * @param products List of products separated by semicolon e.g : A1;A2
+     * @param log print states
      */
     public void insert(String products, boolean log){
         itemSets.add(createBitSet(parseProducts(products)));
@@ -101,7 +102,7 @@ public class DataStructure {
             bCount++;
         }
         long time = System.currentTimeMillis() - current;
-        System.out.println(time);
+        System.out.println("execution time : " + time + "ms");
         return (float) bCount/aCount;
     }
 
@@ -110,6 +111,7 @@ public class DataStructure {
      * @param text Containing the percentage.
      */
     public void apriori(String text){
+        long current = System.currentTimeMillis();
         // Parsing the command to find the desired percentage
         float minSup = minSupFinder(text);
         //create the itemSet
@@ -124,6 +126,8 @@ public class DataStructure {
             subSets.clear();
             subset(itemSet , k++ , itemSet.nextSetBit(0) , 0 , new boolean[itemSet.length()] , subSets , minSup);
         }
+        long time = System.currentTimeMillis() - current;
+        System.out.println("Execution time : " + time + "ms");
     }
 
     /**
@@ -232,6 +236,7 @@ public class DataStructure {
      * @param path to file
      */
     public void fromFile(String path) {
+        long current = System.currentTimeMillis();
         File f = Paths.get(path).toFile();
         try(BufferedReader bfBufferedReader = new BufferedReader(new FileReader(f))){
             String s;
@@ -241,6 +246,8 @@ public class DataStructure {
         }catch (Exception e){
             e.printStackTrace();
         }
+        long time = System.currentTimeMillis() - current;
+        System.out.println("execution time : " + time + "ms");
         System.out.println("Imported successfully");
     }
 }
