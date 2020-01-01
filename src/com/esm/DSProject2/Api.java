@@ -11,23 +11,25 @@ public class Api {
         while (true) {
             if (command.contains("Show sup of 2 sets")) {
                 float sup = ds.sup(command);
-                System.out.println(sup * 100 + "%");
+                System.out.println("Result:" + sup * 100 + "%");
             } else if (command.contains("Show conf of 2 sets")) {
                 float conf = ds.conf(command);
-                System.out.println(conf*100 + "%");
+                System.out.println("Result:" + conf*100 + "%");
             } else if (command.contains("Show all sets with sups more than")) {
+                System.out.println("Subsets : ");
                 ds.apriori(command);
             } else if (command.contains("file")) {
                 System.out.print("Enter File Path: ");
                 ds.fromFile(sc.nextLine());
             } else if (command.contains("insert")) {
                 System.out.println("Enter your products separated by (;) :");
-                ds.insert(sc.nextLine());
+                ds.insert(sc.nextLine(), true);
             } else if (command.equals("exit")) {
                 break;
             } else {
                 System.out.println("Invalid Command");
             }
+            System.out.println("|===============================|");
             command = sc.nextLine();
         }
     }

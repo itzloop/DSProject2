@@ -23,9 +23,11 @@ public class DataStructure {
      * For adding data manually
      * @param products List of products separated by semicolon e.g : A1;A2
      */
-    public void insert(String products){
+    public void insert(String products, boolean log){
         itemSets.add(createBitSet(parseProducts(products)));
         sizeOfCustomers++;
+        if (log)
+            System.out.println("Record inserted successfully");
     }
 
     /**
@@ -47,7 +49,7 @@ public class DataStructure {
             count++;
         }
         long time = System.currentTimeMillis() - current;
-        System.out.println(time + "ms");
+        System.out.println("execution time : " + time + "ms");
         return (float) count/sizeOfCustomers;
     }
 
@@ -234,7 +236,7 @@ public class DataStructure {
         try(BufferedReader bfBufferedReader = new BufferedReader(new FileReader(f))){
             String s;
             while ((s = bfBufferedReader.readLine()) != null)
-                this.insert(s);
+                this.insert(s, false);
 
         }catch (Exception e){
             e.printStackTrace();
