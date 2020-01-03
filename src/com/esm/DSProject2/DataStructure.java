@@ -220,7 +220,7 @@ public class DataStructure {
                 subSets.add(bitSet);
             return;
         }
-        if (start == A.cardinality()) {
+        if (start == A.cardinality()+1) {
             return;
         }
         if(start == -1)
